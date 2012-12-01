@@ -10,7 +10,6 @@ from django.views.generic.base import View
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.utils import simplejson as json
-import models as m
 
 
 def logout(request):
@@ -43,21 +42,3 @@ class LandingView(View):
             return HttpResponseRedirect(reverse('home'))
         else:
             return HttpResponseRedirect(reverse('login'))
-
-
-class HomeView(View):
-    template = 'home.html'
-
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        context = RequestContext(request, {'first_name': user.username})
-        return render_to_response(self.template, context_instance=context)
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return HttpResponseRedirect('/home/')
-
-        except ValidationError as v:
-            return HttpResponseBadRequest(json.dumps(v.mesage_dict))
-        except Exception as e:
-            return HttpResponseBadRequest(json.dumps({'error': e.message}))

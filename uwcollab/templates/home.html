@@ -13,13 +13,13 @@
 		  <div class="control-group">
 		    <label class="control-label" for="id_title"></label>
 		    <div class="controls">
-		      <input type="text" name="question title" id="id_title" placeholder="Question Title">
+		      <input type="text" name="title" id="id_title" placeholder="Question Title">
 		    </div>
 		  </div>
 		  <div class="control-group">
-		    <label class="control-label" for="id_desc"></label>
+		    <label class="control-label" for="id_content"></label>
 		    <div class="controls">
-		      <input type="text" name="desc" id="id_desc" placeholder="Description">
+		      <input type="text" name="content" id="id_content" placeholder="Description">
 		    </div>
 		  </div>
 		  <div class="control-group">
@@ -27,6 +27,13 @@
 		  </div>
 		</form>
 	  </li>
+	</ul>
+</div>
+<div>
+	<ul>
+		{% for question in questions %}
+    		<li>{{ question.user.username }} asked {{ question.title }}</li>
+		{% endfor %}
 	</ul>
 </div>
 {% endblock %}

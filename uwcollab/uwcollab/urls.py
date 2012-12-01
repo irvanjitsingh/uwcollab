@@ -4,7 +4,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from auth.views import LandingView, logout, HomeView
+from auth.views import LandingView, logout
+from posts.views import HomeView
 import settings
 
 
