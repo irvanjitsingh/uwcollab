@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block nav_bar_content %}
+<div>
+    <form class="navbar-form pull-right" method="POST" action="{% url login %}"> {% csrf_token %}
+      <input type='text' name='username' placeholder='username'/>
+      <input type='password' name='password' placeholder='password'/>
+      <input class='btn btn-success' type='submit' value='Login'/ >
+    </form>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span4">
+      <div class="hero-unit">
+      <!--Sidebar content-->
+ 
+      </div> 
+ 
+
+
+    </div>
+    <div class="span8">
+      <!--Body content-->
+      <div class="hero-unit">
+        <h1 style="margin-bottom:15px">Quaterloo!</h1>
+        <p>A great solution to all of the collaboration problems in universities.</p>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h2>Do something.</h2>
+           <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+        </div>
+        <div class="span4">
+          <h2>Do something else.</h2>
+           <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+       </div>
+        <div class="span4">
+          <h2>Cheat on assignments.</h2>
+          <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+        </div>
+      </div>
+      <!--End body-->
+    </div>
+  </div>
+</div>
+{% endblock %}

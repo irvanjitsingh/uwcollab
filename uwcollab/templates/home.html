@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block nav_bar_content %}
+<ul style="float:right" class="nav">
+    <li><a href="{% url logout %}">Logout</a></li>
+</ul>
+{% endblock %}
+{% block content %}Welcome to your Qloo, {{ first_name }}!
+<div>
+	<ul class="thumbnails">
+	  <li class="span12">
+	  	<form class="form-horizontal" action="" method="post">{% csrf_token %}
+		  <div class="control-group">
+		    <label class="control-label" for="id_title"></label>
+		    <div class="controls">
+		      <input type="text" name="question title" id="id_title" placeholder="Question Title">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="id_desc"></label>
+		    <div class="controls">
+		      <input type="text" name="desc" id="id_desc" placeholder="Description">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <input type="submit" class="btn" name="Qloo!"/>
+		  </div>
+		</form>
+	  </li>
+	</ul>
+</div>
+{% endblock %}
