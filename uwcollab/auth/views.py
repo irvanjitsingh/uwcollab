@@ -38,7 +38,6 @@ class LandingView(View):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        import ipdb; ipdb.set_trace()
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(reverse('home'))

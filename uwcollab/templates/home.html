@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block nav_bar_content %}
+{% block nav_bar_content %} 
+<a class="brand" href="#">{{first_name}}</a>
 <ul style="float:right" class="nav">
     <li><a href="{% url logout %}">Logout</a></li>
 </ul>
