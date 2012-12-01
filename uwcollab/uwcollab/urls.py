@@ -5,7 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from auth.views import LandingView, logout
-from posts.views import HomeView
+from posts.views import HomeView, PostView
 import settings
 
 
@@ -24,6 +24,9 @@ urlpatterns = patterns('',
     url(r'^$', LandingView.as_view(), name='login'),
     url(r'^logout/?$', logout, name='logout'),
     url(r'^home/?$', HomeView.as_view(), name='home'),
+
+    #post urls
+    url(r'^posts/(?P<post_id>\d+)/?$', PostView.as_view(), name='post_view')
 
 )
 
