@@ -24,6 +24,8 @@ urlpatterns = patterns('',
     url(r'^$', LandingView.as_view(), name='login'),
     url(r'^logout/?$', logout, name='logout'),
     url(r'^home/?$', HomeView.as_view(), name='home'),
+    url("", include('django_socketio.urls')),
+    url("", include("chat.urls")),
 
 )
 
@@ -36,3 +38,4 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += staticfiles_urlpatterns()
+
