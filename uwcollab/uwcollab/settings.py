@@ -131,6 +131,9 @@ INSTALLED_APPS = (
     'django_cas',
     'posts',
     'auth',
+    'django_socketio',
+    'chat',
+
 )
 
 # A sample logging configuration. The only tangible logging
