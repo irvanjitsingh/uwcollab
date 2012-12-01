@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework.response import Response
 import forms
 from django.core.exceptions import ValidationError
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
@@ -31,3 +32,16 @@ class HomeView(APIView):
             return HttpResponseBadRequest(json.dumps(v.mesage_dict))
         except Exception as e:
             return HttpResponseBadRequest(json.dumps({'error': e.message}))
+
+
+class PostView(APIView):
+    template = 'post.html'
+
+    def get(self, request, *args, **kwargs):
+        try:
+            question = Question.objects.get(id=int(kwargs['post_id']))
+            context = RequestContext(request, {'first_name': request.user.username, 'question': question})
+            return render_to_response(self.template, context_instance=context)
+        except Question.DoesNotExit as e:
+            return Response(400, e.message)
+
