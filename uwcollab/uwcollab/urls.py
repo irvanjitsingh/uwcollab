@@ -30,8 +30,8 @@ urlpatterns = patterns('',
 media_root = {'document_root': settings.MEDIA_ROOT}
 urlpatterns += patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', media_root),
-    (r'^accounts/login/$', 'django_cas.views.login'),
-    (r'^accounts/logout/$', 'django_cas.views.logout'),
+    # (r'^accounts/login/$', 'django_cas.views.login'),
+    # (r'^accounts/logout/$', 'django_cas.views.logout'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

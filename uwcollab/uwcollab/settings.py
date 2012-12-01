@@ -89,7 +89,7 @@ TEMPLATE_LOADERS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'django_cas.backends.CASBackend',
+    # 'django_cas.backends.CASBackend',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,8 +98,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django_cas.middleware.CASMiddleware',
-    'django.middleware.doc.XViewMiddleware',
+    # 'django_cas.middleware.CASMiddleware',
+    # 'django.middleware.doc.XViewMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
