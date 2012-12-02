@@ -5,7 +5,7 @@
     <form class="navbar-form pull-right" method="POST" action="{% url login %}"> {% csrf_token %}
       <input type='text' name='username' placeholder='username'/>
       <input type='password' name='password' placeholder='password'/>
-      <input class='btn btn-success' type='submit' value='Login'/ >
+      <input class='btn btn-inverse' type='submit' value='Login' style="color:#DCE419;" />
     </form>
 </div>
 {% endblock %}
@@ -14,9 +14,35 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span4">
-      <div class="hero-unit">
+      <div class="well">
       <!--Sidebar content-->
- 
+        <form class="form-vertical" id="registerHere" method='post' action='/register/'>{% csrf_token %}
+        <fieldset>
+
+        <legend>Don't have an account?</legend>
+
+        <div class="control-group">
+        <div class="controls">
+        <input type="text" class="input-block-level" id="user_name" name="username" rel="popover" data-content="Enter your first and last name." data-original-title="Full Name" placeholder="Username">
+
+
+        <div class="control-group">
+        <div class="controls">
+        <input type="text" class="input-block-level" id="user_email" name="email" rel="popover" data-content="What’s your email address?" data-original-title="Email" placeholder="Email">
+
+        <div class="control-group">
+        <div class="controls">
+        <input type="password" class="input-block-level" id="user_password" name="password" rel="popover" data-content="What’s your email address?" data-original-title="Password" placeholder="Password">
+
+        <div class="control-group">
+        <label class="control-label"></label>
+        <div class="controls">
+        <button type="submit" class="btn btn-inverse" style="color:#DCE419;">Create My Account</button>
+        </div>
+        </div>
+
+        </fieldset>
+        </form>
       </div> 
  
 

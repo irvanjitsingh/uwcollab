@@ -4,7 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from auth.views import LandingView, logout
+from auth.views import LandingView, logout, RegistrationView
 from posts.views import HomeView, PostView
 import settings
 
@@ -24,8 +24,10 @@ urlpatterns = patterns('',
     url(r'^$', LandingView.as_view(), name='login'),
     url(r'^logout/?$', logout, name='logout'),
     url(r'^home/?$', HomeView.as_view(), name='home'),
+    url(r'^register/?$', RegistrationView.as_view(), name='register'),
     url("", include('django_socketio.urls')),
-    url("", include('chat.urls')),
+    url("", include("chat.urls")),
+
 
     #post urls
     url(r'^posts/(?P<post_id>\d+)/?$', PostView.as_view(), name='post_view')
