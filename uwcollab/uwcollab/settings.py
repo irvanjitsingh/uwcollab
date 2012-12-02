@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'posts',
     'auth',
     'django_socketio',
-    'chat',
+    # 'chat',
 
 )
 
