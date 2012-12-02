@@ -12,13 +12,13 @@
 	  	<form class="form-horizontal" action="" method="post">{% csrf_token %}
 		  <div class="control-group">
 		    <label class="control-label" for="id_title"></label>
-		    <div class="controls">
+		    <div class="text-area">
 		      <input type="text" name="title" id="id_title" placeholder="Question Title">
 		    </div>
 		  </div>
 		  <div class="control-group">
 		    <label class="control-label" for="id_content"></label>
-		    <div class="controls">
+		    <div class="text-area">
 		      <input type="text" name="content" id="id_content" placeholder="Description">
 		    </div>
 		  </div>
@@ -30,10 +30,22 @@
 	</ul>
 </div>
 <div>
-	<ul>
+	<ul class="well">
 		{% for question in questions %}
-    		<li class="post_item">
-    			<a href="posts/{{ question.id }}">{{ question.user.username }} asked {{ question.title }}</a>
+    		<li class="alert" style="overflow:hidden" onmouseover="this.style.backgroundColor='#cccccc'" onmouseout="this.style.backgroundColor=''">
+    			<div style="width:19%; float:left;">
+    				<div style="width:90%; height:50%; float:left;">
+    					<img src="/media/img/thumbs_up.jpg" style="float:left; width:50%; height:80px;" />
+    					<img src="/media/img/thumbs_down.jpg" style="float:left; width:50%; height:80px;"/>
+    				</div>
+    				<div align="center">
+    					<h1><font size="60px" line-height="50px">70</font></h1>
+    				</div>
+    			</div>
+    			<a href="posts/{{question.id}}" style="color:#000000" onmouseover="this.style.color='#ccff33'" onmouseout="this.style.color='#000000'"><h4 style="width:50%; float:left;">{{question.title}}</h4></a>
+    			<div style="width:19%; float:right;">
+    				<img src="/media/img/noob.jpg" class="img-circle"/>
+    			</div>
     		</li>
 		{% endfor %}
 	</ul>
