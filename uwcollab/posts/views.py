@@ -9,6 +9,7 @@ from django.utils import simplejson as json
 from models import Question
 from chat import views
 from chat.models import ChatRoom
+from operator import attrgetter
 
 
 class HomeView(APIView):
@@ -16,7 +17,7 @@ class HomeView(APIView):
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        questions = Question.objects.all()
+        questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
         context = RequestContext(request, {'first_name': user.username, 'questions': questions})
         return render_to_response(self.template, context_instance=context)
 
@@ -27,7 +28,7 @@ class HomeView(APIView):
                 title = request.POST.get('title', '')
                 question = Question(user=request.user, title=request.POST.get('title', ''), content=request.POST.get('content', ''))
                 question.save()
-            questions = Question.objects.all()
+            questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
             views.create(title)
             context = RequestContext(request, {'first_name': request.user.username, 'questions': questions})
             return render_to_response(self.template, context_instance=context)
@@ -45,7 +46,7 @@ class PostView(APIView):
         try:
             question = Question.objects.get(id=int(kwargs['post_id']))
             chat_room = ChatRoom.objects.get(name=question.title)
-            context = RequestContext(request, {'first_name': request.user.username, 'question': question, 'room':get_object_or_404(ChatRoom, slug=chat_room.slug)})
+            context = RequestContext(request, {'first_name': request.user.username, 'question': question, 'room': get_object_or_404(ChatRoom, slug=chat_room.slug)})
             return render_to_response(self.template, context_instance=context)
         except Question.DoesNotExist as e:
             return Response(400, e.message)
