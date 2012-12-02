@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block nav_bar_content %} 
+<a class="brand" href="">{{first_name}}</a>
+<ul style="float:right" class="nav">
+    <li><a href="{% url logout %}">Logout</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<div>
+  <ul class="well">
+    <h1><b><u><center>METRICS</center></u></b></h1>
+    <li class="alert">
+      <h2><center>The most frequently occuring words in Questions:</center></h2>
+      <br><br>
+      {% for f in frequency %}
+        <h3>{{ f }}</h3>
+        <br>
+      {% endfor %}
+    </li>
+    <li class="alert">
+      <h2>The top two most viewed questions were:</h2>
+      <br><br>
+      {% for name in views %}
+        <h3>{{ name }}</h3>
+        <br>
+      {% endfor %}
+    </li>
+    <li class="alert">
+      <h2>More metrics to come</h2>
+    </li>
+  </ul>
+</div>
+
+
+
+{% endblock %}

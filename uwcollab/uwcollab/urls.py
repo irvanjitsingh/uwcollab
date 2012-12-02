@@ -6,6 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from auth.views import LandingView, logout, RegistrationView
 from posts.views import HomeView, PostView
+from stats.views import stats
 import settings
 
 
@@ -27,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^register/?$', RegistrationView.as_view(), name='register'),
     url("", include('django_socketio.urls')),
     url("", include("chat.urls")),
+    url(r'^stats/?$', stats, name='stats'),
 
 
     #post urls
