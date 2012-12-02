@@ -7,97 +7,70 @@
     <li><a href="{% url logout %}">Logout</a></li>
 </ul>
 
-<head>
-<!--CSS-->
-<style type="text/css">
-html, body {
-  width:  100%;
-  height: 100%;
-}
+{% block extra_head %}
+<style type="text/css">  
 
-#canvas {
-  background-color: #333333;
-  position: absolute;
-  top: 35px;
-}
-	
-#status {
-  color: #FFFFFF;
-  position: absolute;
-  cursor: default;
-  font-family: Helvetica, Verdana, sans-serif;
-  font-weight: bold;
-  margin: 10px;
-  top: 30px;
-}
 
-#controls {
-  background-color: #AAAAAA;
-  position: absolute;
-  font-family: Helvetica, Verdana, sans-serif;
-  font-weight: bold;
-  font-size: smaller;
-  padding: 3px;
-  width: 594px;
-  height: 25px;
-}
 
-select {
-  font-family: monospace;
-  font-size: medium;
-}
-
-* {
-  padding:0;
-  margin:0;
-}
 </style>
-
-</head>
+{% endblock %}
 
 <script type="text/javascript" src="http://cdn.unioncloud.io/OrbiterMicro_latest.js"></script>
 <!--Load the OrbiterMicro JavaScript library (minified version). Use for production.-->
 <!--<script type="text/javascript" src="http://cdn.unioncloud.io/OrbiterMicro_latest_min.js"></script>-->
 
 <!--Load UnionDraw application code-->
-<script src="/media/js/uniondraw.js"></script>
-
+<script src="/media/js/uniondraw.js"></script
+<script src="/media/js/excanvas.js"></script>
 {% endblock %}
 {% block content %}
-DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS! DICKS!
+<div class="media input-block-level alert" style="overflow:hidden">
+  <a class="pull-left" href="#">
+    <img class="media-object" style="margin-right:10px" src="/media/img/noob.jpg" width="100px" height="100px">
+  </a>
+  <div class="media-body" style="width:70%; float:left;">
+    <h4 class="media-heading">{{question.title}}</h4>
+    <p class="media-content">{{question.content}}</h4>
+  </div>
+</div>
 
 {# CHAT IFRAME #}
-<iframe src='{{ room.get_absolute_url }}'></iframe>
+<div class="well input-block-level" width="400px">
+  <iframe class ="input-block-level" style="position:relative;"width="90%" height="50%" src='{{ room.get_absolute_url }}'></iframe>
 
-  <!--Drop down menus for selecting line thickness and color-->
-  <div id="controls">
-    Size:
-    <select id="thickness" class="fixed">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-    </select>
+  <div width="90%" height="50%">
+      <!--Drop down menus for selecting line thickness and color-->
+    <div id="controls" style="float-right;">
+      Size:
+      <select id="thickness" class="fixed">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
 
-    Color:
-    <select id="color">
-      <option value="#FFFFFF">#FFFFFF</option>
-      <option value="#AAAAAA">#AAAAAA</option>
-      <option value="#666666">#666666</option>
-      <option value="#000000">#000000</option>
-      <option value="#9BA16C">#9BA16C</option>
-      <option value="#CC8F2B">#CC8F2B</option>
-      <option value="#63631D">#63631D</option>
-    </select>
-  </div>
+      Color:
+      <select id="color" style="float-right;">
+        <option value="#FFFFFF">#FFFFFF</option>
+        <option value="#AAAAAA">#AAAAAA</option>
+        <option value="#666666">#666666</option>
+        <option value="#000000">#000000</option>
+        <option value="#9BA16C">#9BA16C</option>
+        <option value="#CC8F2B">#CC8F2B</option>
+        <option value="#63631D">#63631D</option>
+      </select>
+    </div>
   
   <!--The canvas where drawings will be displayed-->
-  <canvas id="canvas">ijlljhlh</canvas>
+    <canvas id="canvas" class="well input-block-level" style="background-color: #333333;" ></canvas>
+  </div>
+</div>
+
+
   
-  <!--A status text field, for displaying connection information-->
-  <div id="status"></div>
+  
 
 {% endblock %}
