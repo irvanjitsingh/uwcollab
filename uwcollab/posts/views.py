@@ -3,11 +3,12 @@ from rest_framework.response import Response
 import forms
 from django.core.exceptions import ValidationError
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import simplejson as json
 from models import Question
 from chat import views
+from chat.models import ChatRoom
 
 
 class HomeView(APIView):
@@ -43,8 +44,9 @@ class PostView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             question = Question.objects.get(id=int(kwargs['post_id']))
-            context = RequestContext(request, {'first_name': request.user.username, 'question': question})
+            chat_room = ChatRoom.objects.get(name=question.title)
+            context = RequestContext(request, {'first_name': request.user.username, 'question': question, 'room':get_object_or_404(ChatRoom, slug=chat_room.slug)})
             return render_to_response(self.template, context_instance=context)
-        except Question.DoesNotExit as e:
+        except Question.DoesNotExist as e:
             return Response(400, e.message)
 
