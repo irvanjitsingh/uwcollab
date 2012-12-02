@@ -7,6 +7,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.utils import simplejson as json
 from models import Question
+from chat import views
 
 
 class HomeView(APIView):
@@ -22,9 +23,11 @@ class HomeView(APIView):
         form = forms.PostForm(request.POST)
         try:
             if(form.is_valid()):
+                title = request.POST.get('title', '')
                 question = Question(user=request.user, title=request.POST.get('title', ''), content=request.POST.get('content', ''))
                 question.save()
             questions = Question.objects.all()
+            views.create(title)
             context = RequestContext(request, {'first_name': request.user.username, 'questions': questions})
             return render_to_response(self.template, context_instance=context)
 
