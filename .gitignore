@@ -1,2 +1,6 @@
-.DS_Store
+*.DS_Store
 /uwcollab/uwcollab/local_settings.py
+*.pyc
+*.db
+
+uwcollab/uwcollab/urls.pyc
